@@ -7,11 +7,9 @@ This project is an application that can be used to write, save, and delete notes
 
 Tech Used: HTML, Bootstrap CSS, Javascript, Node.js, Express JS, UUID, Heroku
 
-Contact: chasej@live.com
-
 ## Deployment
 
-The application can be accessed at: [Express Note Taker](https://obscure-plateau-29195.herokuapp.com/)
+The application can be accessed at: [Express Note Taker](https://obscure-plateau-29195.herokuapp.com/){:target="_blank"}
 
 ## Resources
 

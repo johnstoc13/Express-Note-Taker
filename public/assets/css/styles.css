@@ -68,3 +68,21 @@ html, body {
   padding: 20px;
   cursor: pointer;
 }
+
+.bg-blue {
+  background-color: #2d73ac;
+}
+
+.blue {
+  color: #2d73ac;
+}
+
+.orange,
+div .btn:hover {
+  color: #faa161!important;
+}
+
+.fas:hover,
+.navbar-brand:hover {
+    color: #faa161!important;
+}

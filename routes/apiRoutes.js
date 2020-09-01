@@ -10,7 +10,7 @@ module.exports = function (app) {
         fs.readFile("./db/db.json", (err, data) => {
             if (err) throw err;
             res.json(JSON.parse(data));
-        })
+        });
     });
 
     // API POST Request
@@ -19,7 +19,7 @@ module.exports = function (app) {
         db.push(req.body);
         fs.writeFile("./db/db.json", JSON.stringify(db), (err) => {
             if (err) throw err;
-        })
+        });
         res.json(db);
     });
 
@@ -35,10 +35,10 @@ module.exports = function (app) {
                     db.splice(i, 1);
                     fs.writeFile("./db/db.json", JSON.stringify(db), (err) => {
                         if (err) throw err;
-                    })
+                    });
                     res.json(db);
                 }
             }
-        })
+        });
     });
 };

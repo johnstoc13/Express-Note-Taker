@@ -1,7 +1,7 @@
 const db = require("../db/db.json");
 const fs = require("fs");
 const { v4: uuidv4 } = require('uuid');
-// const { json } = require("express");
+
 
 module.exports = function (app) {
 
@@ -10,7 +10,6 @@ module.exports = function (app) {
         fs.readFile("./db/db.json", (err, data) => {
             if (err) throw err;
             res.json(JSON.parse(data));
-            // console.log(db);
         })
     });
 
@@ -27,12 +26,10 @@ module.exports = function (app) {
     // API DELETE Request
     app.delete("/api/notes/:id", (req, res) => {
 
-        fs.readFile("./db/db.json", (err, id) => {
+        fs.readFile("./db/db.json", (err) => {
             if (err) throw err;
+            // Credit:  https://stackoverflow.com/questions/53661683/matching-a-delete-request-to-a-json-object
             let deletedNote = req.params.id;
-            console.log("#1", deletedNote);
-            console.log("#2", db.length);
-            // console.log("#3", db[2].id);
             for (let i = 0; i < db.length; i++) {
                 if (db[i].id === deletedNote) {
                     db.splice(i, 1);
@@ -42,7 +39,6 @@ module.exports = function (app) {
                     res.json(db);
                 }
             }
-            console.log("#4", db);
         })
     });
 };

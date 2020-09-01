@@ -9,7 +9,7 @@ Tech Used: HTML, Bootstrap CSS, Javascript, Node.js, Express JS, UUID, Heroku
 
 ## Deployment
 
-The application can be accessed at: [Express Note Taker](https://obscure-plateau-29195.herokuapp.com/){:target="_blank"}
+The application can be accessed at: [Express Note Taker](https://obscure-plateau-29195.herokuapp.com/){:target="_blank" rel="noopener"}
 
 ## Resources
 

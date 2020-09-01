@@ -1,14 +1,16 @@
 const db = require("../db/db.json");
 const fs = require("fs");
 const { v4: uuidv4 } = require('uuid');
+// const { json } = require("express");
 
 module.exports = function (app) {
-    
+
     // API GET Request
     app.get("/api/notes", (req, res) => {
         fs.readFile("./db/db.json", (err, data) => {
             if (err) throw err;
             res.json(JSON.parse(data));
+            // console.log(db);
         })
     });
 
@@ -16,35 +18,31 @@ module.exports = function (app) {
     app.post("/api/notes", (req, res) => {
         req.body.id = uuidv4();
         db.push(req.body);
-        fs.writeFile("./db/db.json", JSON.stringify(db), (err,) => {
+        fs.writeFile("./db/db.json", JSON.stringify(db), (err) => {
             if (err) throw err;
         })
         res.json(db);
     });
 
-    // **** POST `/api/notes` ****
-    // Should receive a new note to 
-    // save on the request body, add it to the `db.json` file, 
-    // and then return the new note to the client.
+    // API DELETE Request
+    app.delete("/api/notes/:id", (req, res) => {
 
-
-
-
-
-
-    // app.post("/api/clear", function (req, res) {
-    //     // Empty out the arrays of data
-    //     tableData.length = 0;
-    //     waitListData.length = 0;
-
-    //     res.json({ ok: true });
-    // });
-
-
-    //   * DELETE`/api/notes/:id` - Should receive a query parameter 
-    // containing the id of a note to delete.This means you'll need to find
-    //  a way to give each note a unique `id` when it's saved.In order to 
-    //  delete a note, you'll need to read all notes from the `db.json` file, 
-    //  remove the note with the given `id` property, and then rewrite the 
-    //  notes to the `db.json` file.
+        fs.readFile("./db/db.json", (err, id) => {
+            if (err) throw err;
+            let deletedNote = req.params.id;
+            console.log("#1", deletedNote);
+            console.log("#2", db.length);
+            // console.log("#3", db[2].id);
+            for (let i = 0; i < db.length; i++) {
+                if (db[i].id === deletedNote) {
+                    db.splice(i, 1);
+                    fs.writeFile("./db/db.json", JSON.stringify(db), (err) => {
+                        if (err) throw err;
+                    })
+                    res.json(db);
+                }
+            }
+            console.log("#4", db);
+        })
+    });
 };

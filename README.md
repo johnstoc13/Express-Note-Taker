@@ -11,7 +11,7 @@ Contact: chasej@live.com
 
 ## Deployment
 
-The application can be accessed at: [Express Note Taker] ***add link***
+The application can be accessed at: [Express Note Taker](https://obscure-plateau-29195.herokuapp.com/)
 
 ## Resources
 
